@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alan Walker Music</title>
+</head>
+<body>
+  <style>
+    * {box-sizing: border-box; font-family: 'Poppins', sans-serif;}
+    body {
+      margin: 0;
+      background: url('alanwalker.jpg') center/cover no-repeat fixed;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 0;
+    }
+    .phone {
+      width: 370px;
+      height: 740px;
+      border-radius: 40px;
+      background: rgba(20,20,20,0.9);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    .spotify-logo {
+      width: 60px;
+      margin-bottom: 10px;
+    }
+    .screen {
+      flex: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .cover {
+      width: 160px;
+      height: 160px;
+      border-radius: 20px;
+      background: url('walker.jpg') center/cover;
+      margin-bottom: 20px;
+      animation: spin 8s linear infinite;
+      animation-play-state: paused;
+    }
+     @keyframes spin {
+      from {transform: rotate(0);}
+      to {transform: rotate(360deg);}
+     }
+     .title { font-size: 18px; font-weight: bold; text-align: center; }
+    .artist { font-size: 14px; color: #aaa; text-align: center; margin-bottom: 20px; }
+    .controls button {
+      margin: 0 8px;
+      background: #1DB954;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .controls button:hover { opacity: 0.85; }
+    .playlist {
+      margin-top: 20px;
+      width: 100%;
+      text-align: left;
+      font-size: 14px;
+    }
+     .playlist div {
+      padding: 6px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .playlist div.active {
+      background: rgba(29,185,84,0.3);
+    }
+    .power-btn {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1DB954;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    } canvas {
+      width: 90%;
+      height: 60px;
+      margin-top: 20px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+    }
+  </style>
+</body>
+  <div class="overlay"></div>
+  <div class="phone">
+    <img src="sport.jpeg" class="spotify-logo" alt="spotify-logo">
+    <div class="screen">
+      <div class="cover" id="cover"></div>
+      <div class="tittle" id="tittle">No Track</div>
+      <div class="artist" id="artist">—</div>
+      <div class="controls">
+        <button id="prev">Prev</button>
+        <button id="prev">Play</button>
+        <button id="prev">Next</button>
+      </div>
+      <canvas id="visualizer"></canvas>
+      <div class="playlist" id="playlist"></div>
+    </div>
+    <button class="power-btn" id="power"POWER ON></button>
+  </div>
+    <script>
+    const tracks = [
+      { title: "Hero", artist: "Alan Walker & Sasha Alex Sloan", file: "hero.mp3.mp3" },
+      { title: "Faded", artist: "Alan Walker", file: "faded.mp3.mp3" },
+      { title: "On My Way", artist: "Alan Walker ft. Sabrina Carpenter", file: "OnMyWay.mp3.mp3" }
+    ];
+
+    let current = 0;
+    let isPlaying = false;
+    let powered = false;
+</html>
